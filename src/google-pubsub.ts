@@ -72,7 +72,7 @@ export default class GooglePubSub implements PubSubEngine {
   private getMessageHandler(subName) {
     const engine = this;
     async function handleMessage(message) {
-      message.ack();
+      // message.ack(); // we want to manage this ourselfs
       const res = await engine.commonMessageHandler(message);
       const { ids = [] } = engine.googleSubName2GoogleSubAndClientIds[subName] || {};
       ids.forEach(id => {
